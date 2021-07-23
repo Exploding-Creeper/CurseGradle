@@ -1,4 +1,4 @@
-package com.matthewprenger.cursegradle.jsonresponse
+package me.hypherionmc.cursegradle.jsonresponse
 
 /**
  * Returned as JSON when an error occurs

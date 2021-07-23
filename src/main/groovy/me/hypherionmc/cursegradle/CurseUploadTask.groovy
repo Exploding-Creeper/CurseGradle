@@ -1,8 +1,8 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 import com.google.common.base.Strings
-import com.matthewprenger.cursegradle.jsonresponse.CurseError
-import com.matthewprenger.cursegradle.jsonresponse.UploadResponse
+import me.hypherionmc.cursegradle.jsonresponse.CurseError
+import me.hypherionmc.cursegradle.jsonresponse.UploadResponse
 import org.apache.http.HttpResponse
 import org.apache.http.client.HttpClient
 import org.apache.http.client.config.CookieSpecs

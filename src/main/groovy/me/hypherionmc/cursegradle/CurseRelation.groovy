@@ -1,8 +1,8 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 import com.google.common.base.Strings
 
-import static com.matthewprenger.cursegradle.Util.check
+import static Util.check
 
 class CurseRelation implements Serializable {
 
@@ -53,7 +53,7 @@ class CurseRelation implements Serializable {
         String slug
 
         /**
-         * The type of relationship. Must be one of {@link com.matthewprenger.cursegradle.CurseGradlePlugin#VALID_RELATIONS}
+         * The type of relationship. Must be one of {@link CurseGradlePlugin#VALID_RELATIONS}
          */
         String type
 

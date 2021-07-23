@@ -1,4 +1,4 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project

@@ -1,4 +1,4 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 /**
  * Various options for CurseGradle. These affect the entire plugin and not just a single curse project.

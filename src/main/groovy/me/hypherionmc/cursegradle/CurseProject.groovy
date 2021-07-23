@@ -1,8 +1,8 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 import javax.annotation.Nullable
 
-import static com.matthewprenger.cursegradle.Util.check
+import static Util.check
 
 class CurseProject {
 

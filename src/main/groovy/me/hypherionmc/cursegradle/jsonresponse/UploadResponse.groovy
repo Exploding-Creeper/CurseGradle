@@ -1,4 +1,4 @@
-package com.matthewprenger.cursegradle.jsonresponse
+package me.hypherionmc.cursegradle.jsonresponse
 
 /**
  * Returned as JSON upon a successful file upload

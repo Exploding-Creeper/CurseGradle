@@ -1,12 +1,12 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 import com.google.common.base.Throwables
-import com.matthewprenger.cursegradle.jsonresponse.VersionType
-import com.matthewprenger.cursegradle.jsonresponse.GameVersion
 import gnu.trove.map.TObjectIntMap
 import gnu.trove.map.hash.TObjectIntHashMap
 import gnu.trove.set.TIntSet
 import gnu.trove.set.hash.TIntHashSet
+import me.hypherionmc.cursegradle.jsonresponse.GameVersion
+import me.hypherionmc.cursegradle.jsonresponse.VersionType
 import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
 

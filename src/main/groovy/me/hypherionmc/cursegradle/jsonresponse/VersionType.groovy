@@ -1,9 +1,9 @@
-package com.matthewprenger.cursegradle.jsonresponse
+package me.hypherionmc.cursegradle.jsonresponse
 
 /**
- * A game version
+ * A dependency
  */
-class GameVersion {
+class VersionType {
 
     /**
      * The unique ID
@@ -11,12 +11,7 @@ class GameVersion {
     int id
 
     /**
-     * Game dependency ID
-     */
-    int gameVersionTypeID
-
-    /**
-     * A friendly name
+     * The user friendly name
      */
     String name
 
@@ -27,9 +22,8 @@ class GameVersion {
 
     @Override
     String toString() {
-        return "GameVersion{" +
+        return "VersionType{" +
                 "id=" + id +
-                ", gameVersionTypeID=" + gameVersionTypeID +
                 ", name='" + name + '\'' +
                 ", slug='" + slug + '\'' +
                 '}'

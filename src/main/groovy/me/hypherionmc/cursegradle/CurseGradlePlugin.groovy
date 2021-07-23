@@ -1,4 +1,4 @@
-package com.matthewprenger.cursegradle
+package me.hypherionmc.cursegradle
 
 import com.google.common.base.Strings
 import org.gradle.api.DefaultTask

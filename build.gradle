@@ -4,6 +4,7 @@ plugins {
     id 'com.gradle.plugin-publish' version '0.12.0'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
+apply plugin: 'maven-publish'
 
 ext {
     inceptionYear = '2015'
@@ -11,12 +12,16 @@ ext {
 }
 
 version = '2.0.0'
-group = 'com.matthewprenger'
+group = 'me.hypherionmc'
 description = 'Gradle plugin to upload artifacts to CurseForge'
 archivesBaseName = 'CurseGradle'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+if (System.getenv('BUILD_NUMBER') != null) {
+    version = "2.0." + System.getenv('BUILD_NUMBER')
+}
+
+sourceCompatibility = 1.16
+targetCompatibility = 1.16
 
 repositories {
     mavenCentral()
@@ -67,11 +72,31 @@ pluginBundle {
     vcsUrl = 'https://github.com/Exploding-Creeper/CurseGradle'
     plugins {
         curseGradlePlugin {
-            id = 'com.matthewprenger.cursegradle'
+            id = 'me.hypherionmc.cursegradle'
             description = project.description
             displayName = 'CurseGradle'
             version = project.version
             tags = ['curseforge', 'publish', 'minecraft']
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+            artifact javadocJar
+            artifact sourcesJar
+        }
+    }
+
+    repositories {
+        maven {
+            url "https://maven.explodingcreeper.me/"
+            credentials {
+                username System.getenv('MAVEN_USER')
+                password System.getenv('MAVEN_PASS')
+            }
         }
     }
 }
