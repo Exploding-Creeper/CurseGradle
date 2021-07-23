@@ -2,15 +2,15 @@ plugins {
     id 'groovy'
     id 'idea'
     id 'com.gradle.plugin-publish' version '0.12.0'
-    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
 ext {
     inceptionYear = '2015'
-    url = 'https://github.com/matthewprenger/CurseGradle'
+    url = 'https://github.com/Exploding-Creeper/CurseGradle'
 }
 
-version = '1.4.0'
+version = '2.0.0'
 group = 'com.matthewprenger'
 description = 'Gradle plugin to upload artifacts to CurseForge'
 archivesBaseName = 'CurseGradle'
@@ -19,7 +19,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -64,7 +64,7 @@ assemble.dependsOn javadocJar, sourcesJar
 
 pluginBundle {
     website = project.url
-    vcsUrl = 'https://github.com/matthewprenger/CurseGradle'
+    vcsUrl = 'https://github.com/Exploding-Creeper/CurseGradle'
     plugins {
         curseGradlePlugin {
             id = 'com.matthewprenger.cursegradle'

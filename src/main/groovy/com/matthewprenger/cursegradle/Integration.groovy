@@ -49,6 +49,9 @@ class Integration {
                     curseProject.addGameVersion('Java 9')
                 }
             }
+            if (JavaVersion.VERSION_16.compareTo(javaVersion) >= 0) {
+                curseProject.addGameVersion('Java 16')
+            }
         } catch (Throwable t) {
             log.warn("Failed to check Java Version", t)
         }
