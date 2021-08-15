@@ -32,4 +32,15 @@ class Options {
      * Enable integration with the ForgeGradle plugin. This includes setting dependencies on the reobfuscation tasks.
      */
     boolean forgeGradleIntegration = true
+
+    /**
+     * Enable integration with the Fabric. This does not add the fabric-api as a dependency
+     */
+    boolean fabricIntegration = true
+
+    /**
+     * Detect if the project uses the Fabric API and add it as a required dependency to the main artifact
+     */
+    boolean detectFabricApi = true
+
 }

@@ -48,10 +48,11 @@ class Integration {
                 if (JavaVersion.VERSION_1_9.compareTo(javaVersion) >= 0) {
                     curseProject.addGameVersion('Java 9')
                 }
+                if (JavaVersion.VERSION_16.compareTo(javaVersion) >= 0) {
+                    curseProject.addGameVersion('Java 16')
+                }
             }
-            if (JavaVersion.VERSION_16.compareTo(javaVersion) >= 0) {
-                curseProject.addGameVersion('Java 16')
-            }
+
         } catch (Throwable t) {
             log.warn("Failed to check Java Version", t)
         }
@@ -81,4 +82,39 @@ class Integration {
             }
         }
     }
+
+    // Experimental Fabric Integration
+    static void checkFabric(Project project, CurseProject curseProject, boolean detectApi) {
+        if (project.configurations.hasProperty("minecraft") && project.configurations.hasProperty("mappings")) {
+            log.info "Fabric mod detected, adding integration..."
+            curseProject.addGameVersion("Fabric")
+
+            project.gradle.taskGraph.whenReady {
+                try {
+                    String mcver = project.configurations.minecraft.allDependencies[0].version;
+                    log.info("Found Minecraft Version: " + mcver)
+                    curseProject.addGameVersion(mcver)
+
+                    // Check for Fabric API and add dependency
+                    if (project.configurations.hasProperty("modImplementation") && detectApi) {
+                        if (project.configurations.modImplementation.allDependencies.find {it.name == 'fabric-api'}) {
+                            String fabricApiVer = project.configurations.modImplementation.allDependencies.find {it.name == 'fabric-api'}.version;
+                            log.info("Found Fabric API Version: " + fabricApiVer)
+                            if (curseProject.mainArtifact.curseRelations != null) {
+                                curseProject.mainArtifact.curseRelations.requiredDependency("fabric-api")
+                            } else {
+                                CurseRelation curseRelation = new CurseRelation();
+                                curseRelation.requiredDependency("fabric-api")
+                                curseProject.mainArtifact.setCurseRelations(curseRelation)
+                            }
+                        }
+                    }
+                } catch (Throwable t) {
+                    log.warn("Failed Fabric integration", t)
+                }
+            }
+        }
+    }
+
+
 }

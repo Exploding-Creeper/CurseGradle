@@ -63,6 +63,9 @@ class CurseGradlePlugin implements Plugin<Project> {
                 if (ext.curseGradleOptions.forgeGradleIntegration) {
                     Integration.checkForgeGradle(project, curseProject)
                 }
+                if (ext.curseGradleOptions.fabricIntegration) {
+                    Integration.checkFabric(project, curseProject, ext.curseGradleOptions.detectFabricApi)
+                }
 
                 curseProject.copyConfig()
 
