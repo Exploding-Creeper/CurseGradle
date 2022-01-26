@@ -5,7 +5,7 @@ import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
-import org.gradle.api.plugins.JavaPluginConvention
+import org.gradle.api.plugins.JavaPluginExtension
 
 class Integration {
 
@@ -32,24 +32,27 @@ class Integration {
     static void checkJavaVersion(Project project, CurseProject curseProject) {
 
         try {
-            JavaPluginConvention javaConv = (JavaPluginConvention) project.getConvention().getPlugins().get("java")
+            JavaPluginExtension javaConv = (JavaPluginExtension) project.getExtensions().findByName("java")
             JavaVersion javaVersion = JavaVersion.toVersion(javaConv.targetCompatibility)
 
-            if (JavaVersion.VERSION_1_6.compareTo(javaVersion) >= 0) {
+            if (JavaVersion.VERSION_1_6 >= javaVersion) {
                 curseProject.addGameVersion('Java 6')
             }
-            if (JavaVersion.VERSION_1_7.compareTo(javaVersion) >= 0) {
+            if (JavaVersion.VERSION_1_7 >= javaVersion) {
                 curseProject.addGameVersion('Java 7')
             }
-            if (JavaVersion.VERSION_1_8.compareTo(javaVersion) >= 0) {
+            if (JavaVersion.VERSION_1_8 >= javaVersion) {
                 curseProject.addGameVersion('Java 8')
             }
             if (project.extensions.getByType(CurseExtension).curseGradleOptions.detectNewerJava) {
-                if (JavaVersion.VERSION_1_9.compareTo(javaVersion) >= 0) {
+                if (JavaVersion.VERSION_1_9 >= javaVersion) {
                     curseProject.addGameVersion('Java 9')
                 }
-                if (JavaVersion.VERSION_16.compareTo(javaVersion) >= 0) {
+                if (JavaVersion.VERSION_16 >= javaVersion) {
                     curseProject.addGameVersion('Java 16')
+                }
+                if (JavaVersion.VERSION_17 >= javaVersion) {
+                    curseProject.addGameVersion('Java 17')
                 }
             }
 
@@ -97,8 +100,8 @@ class Integration {
 
                     // Check for Fabric API and add dependency
                     if (project.configurations.hasProperty("modImplementation") && detectApi) {
-                        if (project.configurations.modImplementation.allDependencies.find {it.name == 'fabric-api'}) {
-                            String fabricApiVer = project.configurations.modImplementation.allDependencies.find {it.name == 'fabric-api'}.version;
+                        if (project.configurations.modImplementation.allDependencies.find { it.name == 'fabric-api' }) {
+                            String fabricApiVer = project.configurations.modImplementation.allDependencies.find { it.name == 'fabric-api' }.version;
                             log.info("Found Fabric API Version: " + fabricApiVer)
                             if (curseProject.mainArtifact.curseRelations != null) {
                                 curseProject.mainArtifact.curseRelations.requiredDependency("fabric-api")

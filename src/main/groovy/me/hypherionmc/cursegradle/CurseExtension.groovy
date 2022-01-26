@@ -35,7 +35,7 @@ class CurseExtension {
         curseProjects.add(curseProject)
     }
 
-    void options(Closure<?> configClosure) {
+    void options(@DelegatesTo(Options) Closure<?> configClosure) {
         curseGradleOptions.with(configClosure)
     }
 }
