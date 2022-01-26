@@ -31,7 +31,7 @@ dependencies {
     compileOnly localGroovy()
 
     implementation group: 'net.sf.trove4j', name: 'trove4j', version: '3.0.3'
-    implementation group: 'com.google.guava', name: 'guava', version: '19.0'
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
     implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.2'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
