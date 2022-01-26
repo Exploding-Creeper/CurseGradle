@@ -26,7 +26,7 @@ class CurseExtension {
      *
      * @param configClosure The configuration closure
      */
-    void project(@DelegatesTo(CurseProject) Closure<?> configClosure) {
+    void project(@DelegatesTo(CurseProject) Closure<CurseProject> configClosure) {
         CurseProject curseProject = new CurseProject()
         curseProject.with(configClosure)
         if (curseProject.apiKey == null) {
@@ -35,7 +35,7 @@ class CurseExtension {
         curseProjects.add(curseProject)
     }
 
-    void options(@DelegatesTo(Options) Closure<?> configClosure) {
+    void options(@DelegatesTo(Options) Closure<Options> configClosure) {
         curseGradleOptions.with(configClosure)
     }
 }

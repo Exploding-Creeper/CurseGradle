@@ -67,7 +67,7 @@ class CurseArtifact implements Serializable {
     @SerializedName("relations")
     CurseRelation curseRelations
 
-    void relations(@DelegatesTo(CurseRelation) Closure<?> configClosure) {
+    void relations(@DelegatesTo(CurseRelation) Closure<CurseRelation> configClosure) {
         CurseRelation relation = new CurseRelation()
         relation.with(configClosure)
         curseRelations = relation
