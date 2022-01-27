@@ -58,7 +58,7 @@ class CurseProject {
     List<Object> gameVersionStrings = new ArrayList<>()
 
     @Nullable
-    Set<Closure<?>> curseRelations
+    Set<Closure<CurseRelation>> curseRelations
 
     /**
      * Set the main artifact to upload
@@ -66,7 +66,7 @@ class CurseProject {
      * @param artifact The artifact
      * @param configClosure Optional configuration closure
      */
-    void mainArtifact(def artifact, @DelegatesTo(CurseArtifact)Closure<?> configClosure = null) {
+    void mainArtifact(def artifact, @DelegatesTo(CurseArtifact) Closure<CurseArtifact> configClosure = null) {
         CurseArtifact curseArtifact = new CurseArtifact()
         if (configClosure != null) {
             curseArtifact.with(configClosure)
@@ -81,7 +81,7 @@ class CurseProject {
      * @param artifact The artifact
      * @param configClosure Optional configuration closure
      */
-    void addArtifact(def artifact, @DelegatesTo(CurseArtifact)Closure<?> configClosure = null) {
+    void addArtifact(def artifact, @DelegatesTo(CurseArtifact) Closure<CurseArtifact> configClosure = null) {
         CurseArtifact curseArtifact = new CurseArtifact()
         if (configClosure != null) {
             curseArtifact.with(configClosure)
@@ -104,7 +104,7 @@ class CurseProject {
      *
      * @param configureClosure The configuration closure
      */
-    void relations(@DelegatesTo(CurseRelation)Closure<?> configureClosure) {
+    void relations(@DelegatesTo(CurseRelation) Closure<CurseRelation> configureClosure) {
         if (curseRelations == null) {
             curseRelations = new HashSet<>()
         }
