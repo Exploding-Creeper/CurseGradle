@@ -1,5 +1,9 @@
 # CurseGradle - Updated
 
+# Maintenance of this plugin has been dropped in favor of [modpublisher](https://github.com/firstdarkdev/modpublisher). Please use that instead, as it's much more updated, much more stable and has a lot more features.
+
+
+
 [![Build Status](https://ci.explodingcreeper.me/buildStatus/icon?job=CurseGradle)](https://ci.explodingcreeper.me/view/HypherionMC's%20Projects/job/CurseGradle/)
 
 An updated fork of the CurseGradle gradle plugin for publishing artifacts to [CurseForge](https://curseforge.com/).
